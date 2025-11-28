@@ -131,3 +131,62 @@ WhatsApp MCP is a backend server (often running as a local service) that connect
 **With WhatsApp MCP, you unlock the full power of WhatsApp communication through software—aiding in productivity, information retrieval, and seamless automation.**  
 See further details in the project documentation or setup files.
 
+## Movies MCP
+
+Movies MCP is an MCP server that enables you to search and discover movies by genre, title, or keyword using The Movie Database (TMDB) API. It provides a natural language interface to browse movies, get recommendations, and find information about films across various genres.
+
+### What Is Movies MCP?
+
+Movies MCP is a Python-based MCP server that connects to the TMDB API to fetch movie data. It exposes tools to search for movies by genre, search by title/keyword, and list available genres. The server makes it easy to discover movies and get detailed information including titles, descriptions, release dates, ratings, and poster images.
+
+### What Is It Used For?
+
+- **Movie Discovery:** Find movies by genre (action, comedy, drama, horror, science fiction, etc.)
+- **Movie Search:** Search for specific movies by title or keyword
+- **Recommendations:** Get popular movies in specific genres
+- **Integration With Workflows:** Combine movie data with other MCP agents for analysis, recommendations, or content creation
+- **Natural Language Queries:** Use conversational prompts to find movies ("Show me action movies", "What are some good horror films?")
+
+### Example Functions Provided by Movies MCP
+
+The server provides the following tools:
+
+- `get_movies_by_genre(genre, page, limit)`: Get movies filtered by genre (e.g., "action", "comedy", "drama", "horror", "science fiction")
+- `list_genres()`: List all available movie genres
+- `search_movies(query, page, limit)`: Search for movies by title or keyword
+
+### Supported Genres
+
+The server supports a wide range of genres including:
+Action, Adventure, Animation, Comedy, Crime, Documentary, Drama, Family, Fantasy, History, Horror, Music, Mystery, Romance, Science Fiction, Thriller, War, and Western.
+
+### How to Use Movies MCP
+
+1. **Setup:**
+   - Install Python 3.10 or higher
+   - Install `uv` package manager (recommended) or use `pip`
+   - Navigate to the `movies-mcp-server` directory
+   - Create a virtual environment and install dependencies
+   - See `MOVIES_MCP.md` for detailed setup instructions
+
+2. **Connect:**
+   - Add Movies MCP as a server in your MCP-compatible environment (such as Cursor)
+   - Configure the server in your `mcp.json` file
+   - Restart Cursor completely
+
+3. **Interact:**
+   - Use your client (Cursor or other MCP automation interface) to send queries
+   - Example natural language requests:
+     - *"Get me 10 action movies"*
+     - *"Show me some comedy movies"*
+     - *"What are the best horror movies?"*
+     - *"Search for movies with 'batman' in the title"*
+     - *"Find science fiction movies"*
+
+4. **Automate & Integrate:**
+   - Combine Movies MCP with other agents for movie recommendations, analysis, or content creation
+   - Use movie data in workflows that require entertainment information
+
+**With Movies MCP, discovering and searching for movies becomes as simple as asking a question, making it easy to find entertainment content directly from your MCP client.**  
+See `MOVIES_MCP.md` for detailed installation and configuration instructions.
+
