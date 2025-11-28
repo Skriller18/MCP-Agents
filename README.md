@@ -190,3 +190,93 @@ Action, Adventure, Animation, Comedy, Crime, Documentary, Drama, Family, Fantasy
 **With Movies MCP, discovering and searching for movies becomes as simple as asking a question, making it easy to find entertainment content directly from your MCP client.**  
 See `MOVIES_MCP.md` for detailed installation and configuration instructions.
 
+## Spotify MCP
+
+Spotify MCP is a Model Context Protocol (MCP) server that enables AI assistants like Cursor, Claude Desktop, and other MCP-compatible clients to control Spotify playback, search for music, manage playlists, and interact with your Spotify account through natural language commands. It acts as a bridge between your AI assistant and your Spotify account, providing comprehensive music control and library management capabilities.
+
+### What Is Spotify MCP?
+
+Spotify MCP is a lightweight TypeScript-based MCP server that uses the official Spotify Web API to provide music control and library management. The server handles OAuth 2.0 authentication automatically and manages token refresh, making it seamless to use. It runs as a Node.js process and communicates with MCP clients via stdio (standard input/output), following the MCP protocol specification.
+
+### What Is It Used For?
+
+- **Playback Control:** Play, pause, skip tracks, and manage your Spotify queue through natural language commands
+- **Music Discovery:** Search for tracks, albums, artists, and playlists on Spotify
+- **Playlist Management:** Create playlists, add tracks, and manage your music library programmatically
+- **Library Access:** Browse your saved tracks, recently played songs, and playlists
+- **Album Operations:** Get album details, track listings, and manage saved albums
+- **Queue Management:** View and add items to your playback queue
+- **Integration With Workflows:** Combine Spotify control with other MCP agents for music-based automation and content creation
+- **Natural Language Queries:** Use conversational prompts to control your music ("Play Bohemian Rhapsody", "What's currently playing?", "Create a workout playlist")
+
+### Example Functions Provided by Spotify MCP
+
+The server provides a comprehensive set of tools organized into several categories:
+
+**Read Operations:**
+- `searchSpotify(query, type, limit)`: Search for tracks, albums, artists, or playlists on Spotify
+- `getNowPlaying()`: Get information about the currently playing track
+- `getMyPlaylists(limit)`: List all your Spotify playlists
+- `getPlaylistTracks(playlistId, limit, offset)`: Get tracks from a specific playlist
+- `getRecentlyPlayed(limit)`: Get your recently played tracks
+- `getUsersSavedTracks(limit, offset)`: Get tracks from your "Liked Songs" library
+- `getQueue(limit)`: View your current playback queue
+
+**Playback Control Operations:**
+- `playMusic(uri, type, id, deviceId)`: Start playing a track, album, artist, or playlist
+- `pausePlayback(deviceId)`: Pause the currently playing track
+- `resumePlayback(deviceId)`: Resume paused playback
+- `skipToNext(deviceId)`: Skip to the next track
+- `skipToPrevious(deviceId)`: Skip to the previous track
+- `addToQueue(uri, type, id, deviceId)`: Add a track, album, artist, or playlist to the queue
+
+**Playlist Management:**
+- `createPlaylist(name, description, public)`: Create a new playlist
+- `addTracksToPlaylist(playlistId, trackIds, position)`: Add tracks to an existing playlist
+
+**Album Operations:**
+- `getAlbums(albumIds)`: Get detailed information about one or more albums
+- `getAlbumTracks(albumId, limit, offset)`: Get tracks from a specific album
+- `saveOrRemoveAlbumForUser(albumIds, action)`: Save or remove albums from your library
+- `checkUsersSavedAlbums(albumIds)`: Check if albums are saved in your library
+
+### How to Use Spotify MCP
+
+1. **Setup:**
+   - Install Node.js v16 or higher
+   - Ensure you have a Spotify Premium account (required for playback control features)
+   - Create a Spotify Developer Application (free) at the [Spotify Developer Dashboard](https://developer.spotify.com/dashboard/)
+   - Navigate to the `spotify-mcp` directory
+   - Install dependencies: `npm install`
+   - Build the project: `npm run build`
+   - See `SPOTIFY_MCP.md` for detailed setup instructions
+
+2. **Configuration:**
+   - Create a `spotify-config.json` file with your Spotify app credentials (Client ID and Client Secret)
+   - Run `npm run auth` to authenticate and get access tokens
+   - The server automatically refreshes tokens when they expire
+
+3. **Connect:**
+   - Add Spotify MCP as a server in your MCP-compatible environment (such as Cursor)
+   - Configure the server with the path to `spotify-mcp/build/index.js`
+   - Restart Cursor completely
+
+4. **Interact:**
+   - Use your client (Cursor or other MCP automation interface) to send queries
+   - Example natural language requests:
+     - *"Play Bohemian Rhapsody by Queen"*
+     - *"What's currently playing?"*
+     - *"Create a playlist called 'Workout Mix' and add some energetic tracks"*
+     - *"Search for jazz albums"*
+     - *"Add this song to my queue"*
+     - *"Show me my recently played tracks"*
+     - *"Pause playback"*
+     - *"Copy all the techno tracks from my workout playlist to my work playlist"*
+
+5. **Automate & Integrate:**
+   - Combine Spotify MCP with other agents for music-based automation, recommendations, or content creation
+   - Use music control in workflows that require audio playback or playlist management
+
+**With Spotify MCP, controlling your music becomes as simple as asking your AI assistant, enabling seamless integration of music into your workflow and automation tasks.**  
+See `SPOTIFY_MCP.md` for detailed installation and configuration instructions.
+
